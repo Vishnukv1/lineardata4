@@ -1,0 +1,23 @@
+#question 4
+def find_first_non_repeated_char(string):
+    char_count = {}
+    # count the frequency of each character in the string
+    for char in string:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+    # find the first character with a count of 1
+    for char in string:
+        if char_count[char] == 1:
+            return char
+    # return None if no non-repeated character is found
+    return None
+
+# example usage
+string = "hello world"
+result = find_first_non_repeated_char(string)
+if result:
+    print("The first non-repeated character in '{}' is '{}'".format(string, result))
+else:
+    print("No non-repeated character found in '{}'".format(string))
