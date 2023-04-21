@@ -1,0 +1,17 @@
+#question 6
+def postfix_to_prefix(postfix):
+    stack = []
+    operators = set(['+', '-', '*', '/', '^'])
+    for char in postfix:
+        if char not in operators:
+            stack.append(char)
+        else:
+            operand1 = stack.pop()
+            operand2 = stack.pop()
+            stack.append(char + operand2 + operand1)
+    return stack.pop()
+
+# Example usage
+postfix = "23+4*"
+prefix = postfix_to_prefix(postfix)
+print(prefix) # Output: *+234
