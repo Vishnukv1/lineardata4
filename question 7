@@ -1,0 +1,18 @@
+#question 7
+def prefix_to_infix(prefix):
+    stack = []
+    operators = set(['+', '-', '*', '/', '^'])
+    for char in reversed(prefix):
+        if char in operators:
+            operand1 = stack.pop()
+            operand2 = stack.pop()
+            infix = f"({operand1} {char} {operand2})"
+            stack.append(infix)
+        else:
+            stack.append(char)
+    return stack.pop()
+
+# Example usage
+prefix = "*+234"
+infix = prefix_to_infix(prefix)
+print(infix) # Output: (2 + 3) * 4
